@@ -1,0 +1,13 @@
+services:
+  ui:
+    build: ./ui
+    container_name: react-ui
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./ui:/app
+      - /app/node_modules
+    expose:
+      - 5173
+    stdin_open: true
+    tty: true

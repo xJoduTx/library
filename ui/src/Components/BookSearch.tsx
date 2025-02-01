@@ -26,10 +26,10 @@ export default function findBookWindow() {
 
     return (
         <>
-            <InputBooksAction inputTitle='Ulmas' placeholderTitle="Название"  inputAcion={(Value) => { inputTitle = Value }} />
+            <InputBooksAction inputTitle='Ulmas' placeholderTitle="Название" inputAcion={(Value) => { inputTitle = Value }} />
             <div className="flex place-content-center">
-            <button className="default-button-block" onClick={() => buttonSearchAction(inputTitle)}>Найти</button>
-            <button className="default-button-block" onClick={() => buttonTakeAction(inputTitle)}>Забрать</button>
+                <button className="default-button-block" onClick={() => buttonSearchAction(inputTitle)}>Найти</button>
+                <button className="default-button-block" onClick={() => buttonTakeAction(inputTitle)}>Забрать</button>
             </div>
         </>
     )

@@ -1,7 +1,8 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-export default function GetAllBooks(key: string) {
+export default function GetAllBooks() {
+    const navigation = useNavigate()
     const [books, setBooks] = useState<ApiData[]>([])
 
     const getBookApi = async () => {
@@ -13,10 +14,15 @@ export default function GetAllBooks(key: string) {
                     "Authorization": "Bearer " + localStorage.getItem("token")
                 }
             })
-            if (responce.ok){
+            if (responce.ok) {
                 setBooks(await responce.json())
             }
+            else {
+                navigation("/signup")
+
+            }
         } catch (e) {
+            navigation("/signup")
             console.log("Невозможно забрать данные из базы данных: " + e)
         }
     }

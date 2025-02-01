@@ -6,7 +6,7 @@ import findBookWindow from '../Components/BookSearch'
 import GetAllBooks from '../Components/GetAllBooksAction'
 
 function Books() {
-    const books = GetAllBooks("getAll")
+    const books = GetAllBooks()
 
     return (<div>
         <div className='flex flex-col float-right'>
