@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 @Component
 public class TokenFilter extends OncePerRequestFilter {
@@ -22,28 +23,30 @@ public class TokenFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String headerAuth = request.getHeader("Authorization");
         String jwt = null;
         String username = null;
 
+        System.out.println("Проверка фильтрчейна");
+        Enumeration<String> enume = request.getHeaderNames();
+        while (enume.hasMoreElements()) {
+            String header = enume.nextElement();
+            String value = request.getHeader(header);
+            System.out.printf("\t%s - %s \n", header, value);
+        }
         try {
-            // Проверяем заголовок Authorization
             if (headerAuth != null && headerAuth.startsWith("Bearer ")) {
                 jwt = headerAuth.substring(7); // Убираем "Bearer "
             }
-
             if (jwt != null) {
-                // Извлекаем имя пользователя из токена
                 username = jwtCore.getNameFromJwt(jwt);
             }
-
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                // Загружаем пользователя по имени
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-
-                // Создаём аутентификацию, если токен валиден
                 if (userDetails != null) {
                     UsernamePasswordAuthenticationToken authentication =
                             new UsernamePasswordAuthenticationToken(
