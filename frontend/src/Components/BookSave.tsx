@@ -9,7 +9,14 @@ async function buttonAction(inputTitle: string, inputAuthor: string, inputIsbn: 
         isbn: inputIsbn,
         available_copies: inputAvailableCopies
     }
-    await axios.post("http://localhost:9090/books/save", postBody)
+    await fetch("http://localhost:9090/books/save", {
+        method: "POST",
+        body: JSON.stringify(postBody),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    })
     window.location.reload()
 }
 

@@ -7,8 +7,17 @@ async function buttonSearchAction(inputTitle: number) {
 }
 
 async function buttonTakeAction(inputTitle: number) {
-    await axios.get("http://localhost:9090/books/take/" + inputTitle)
+    const path = "http://localhost:9090/books/take/" + inputTitle
+    await fetch(path, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    })
+
     window.location.reload()
+
 }
 
 export default function findBookWindow() {

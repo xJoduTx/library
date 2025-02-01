@@ -1,8 +1,16 @@
-import axios from "axios";
 import InputBooksAction from "./InputBooksAction"
 
 async function buttonAction(inputTitle: number) {
-    await axios.delete("http://localhost:9090/books/delete/" + inputTitle)
+    const path = "http://localhost:9090/books/delete/" + inputTitle
+    await fetch(path,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        }
+    )
     window.location.reload()
 }
 
