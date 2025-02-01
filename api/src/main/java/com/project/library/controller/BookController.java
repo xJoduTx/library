@@ -20,14 +20,14 @@ public class BookController {
     @NonNull
     private final BookService bookService;
 
-    @CrossOrigin(origins = "http://localhost:5174/", maxAge = 3600)
+//    @CrossOrigin(origins = "http://localhost:5174/", maxAge = 3600)
     @GetMapping("/all") // показывает все книги
     public List<Book> getAll() {
         return bookService.findAllBooksService();
     }
 
     @PostMapping("/save") //сохраняет книгу
-    @CrossOrigin(origins = "http://localhost:5174/", maxAge = 3600)
+//    @CrossOrigin(origins = "http://localhost:5174/", maxAge = 3600)
     public Book saveBook(@Valid @RequestBody BookDTO bookDTO) throws Exception {
         return bookService.saveBookService(bookDTO);
     }
