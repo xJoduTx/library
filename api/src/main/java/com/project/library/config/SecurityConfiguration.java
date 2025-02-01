@@ -19,6 +19,10 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -56,10 +60,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(httpSecurityCorsConfigurer ->
-                        httpSecurityCorsConfigurer.configurationSource(request ->
-                                new CorsConfiguration().applyPermitDefaultValues())
-                )
+                .cors(cors -> cors.configurationSource(configurationSource()))
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 )
@@ -75,5 +76,26 @@ public class SecurityConfiguration {
         return http.build();
     }
 
+    @Bean
+    @Primary
+    public CorsConfigurationSource configurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(List.of(
+                "http://localhost:5173",
+                "http://172.18.0.2:5173/",
+                "http://5.159.102.181:5173",
+                "http://192.168.1.161:5173",
+                "http://26.115.146.29:5173/",
+                "http://192.168.73.85:5173/",
+                "http://192.168.1.161:5173/",
+                "http://localhost:8080/",
+                "http://192.168.1.161:5173"));
+        config.setAllowedMethods(List.of("PUT", "GET", "POST", "Post", "OPTIONS"));
+        config.setAllowedHeaders(List.of("Authorization", "Content-type", "authorization", "hell", "cookie"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+        return source;
+    }
 
 }
