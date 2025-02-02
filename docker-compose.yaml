@@ -3,7 +3,7 @@ services:
     image: my-spring-boot-app
     build: ./api
     ports:
-      - "9090:9090"
+      - '9090:9090'
     depends_on:
       - db
     environment:
@@ -17,7 +17,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydb
     ports:
-      - "5432:5432"
+      - '5432:5432'
   pgadmin:
     container_name: pg-admin
     image: 'dpage/pgadmin4'
