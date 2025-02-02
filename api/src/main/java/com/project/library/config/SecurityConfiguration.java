@@ -81,10 +81,12 @@ public class SecurityConfiguration {
     @Bean
     @Primary
     public CorsConfigurationSource configurationSource() {
+        System.out.println("awdawdawdawdawdawdawdawdadwdawdawd----------------------------------------------------\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n------------------------------------------------------------------------------------");
         System.out.println(allowed_api + "awdawdawdawdawdawdawdawdadwdawdawd----------------------------------------------------\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n------------------------------------------------------------------------------------");
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",
+                "http://185.91.54.108:5173",
                 allowed_api,
                 "http://172.18.0.2:5173/",
                 "http://5.159.102.84:5173",
