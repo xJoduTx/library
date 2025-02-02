@@ -8,7 +8,7 @@ async function buttonAction(inputTitle: string, inputAuthor: string, inputIsbn: 
         isbn: inputIsbn,
         available_copies: inputAvailableCopies
     }
-    await fetch("http://5.159.102.181:5173/books/save", {
+    await fetch("http://5.159.102.84:5173/books/save", {
         method: "POST",
         body: JSON.stringify(postBody),
         headers: {

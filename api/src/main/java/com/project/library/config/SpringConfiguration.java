@@ -12,7 +12,7 @@ public class SpringConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173", "http://5.159.102.181:5173") // Адрес React приложения
+                .allowedOrigins("http://localhost:5173", "http://5.159.102.84:5173") // Адрес React приложения
                 .allowedHeaders("Authorization", "authorization")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
     }

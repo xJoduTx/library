@@ -7,7 +7,7 @@ export default function GetAllBooks() {
 
     const getBookApi = async () => {
         try {
-            const responce = await fetch('http://5.159.102.181:5173/books/all', {
+            const responce = await fetch('http://5.159.102.84:5173/books/all', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

@@ -10,7 +10,7 @@ export default function User() {
     }, [])
 
     async function fetchContent() {
-        const res = await fetch("http://5.159.102.181:5173/secured/user", {
+        const res = await fetch("http://5.159.102.84:5173/secured/user", {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + localStorage.getItem("token")

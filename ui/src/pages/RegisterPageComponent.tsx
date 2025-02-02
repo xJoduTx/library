@@ -16,7 +16,7 @@ export default function Register() {
             "email":inputEmail,
             "password":inputPassword
         }
-        const res = await fetch("http://5.159.102.181:5173/auth/signup", {
+        const res = await fetch("http://5.159.102.84:5173/auth/signup", {
             method: "POST",
             body: JSON.stringify(tempBody),
             headers: {
@@ -24,7 +24,7 @@ export default function Register() {
             }
         })
         if (res.ok) {
-            const res = await fetch("http://5.159.102.181:5173/auth/signin", {
+            const res = await fetch("http://5.159.102.84:5173/auth/signin", {
                 method: "POST",
                 body: JSON.stringify(tempBody),
                 headers: {
