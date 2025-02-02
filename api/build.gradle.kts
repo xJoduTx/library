@@ -19,6 +19,14 @@ configurations {
 	}
 }
 
+tasks.withType<Jar> {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.withType<Test> {
+	useJUnitPlatform()
+}
+
 repositories {
 	mavenCentral()
 }
