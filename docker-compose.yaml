@@ -11,13 +11,17 @@ services:
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
   db:
-    image: postgres:13
+    image: postgres
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydb
+      DB_USER: dbUser
+      DB_PASSWORD: dbPassrowd
+      DB_NAME: dbDbName
     ports:
       - '5432:5432'
+
   pgadmin:
     container_name: pg-admin
     image: 'dpage/pgadmin4'
@@ -26,6 +30,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:5050"
+      
   ui:
     build: ./ui
     container_name: react-ui
