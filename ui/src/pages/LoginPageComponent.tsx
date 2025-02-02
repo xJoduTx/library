@@ -27,7 +27,7 @@ export default function Login() {
             localStorage.setItem("token", json)
             navigate("/")
         }
-        window.location.reload()
+        // window.location.reload()
     }
 
     return (
