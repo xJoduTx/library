@@ -21,6 +21,7 @@ services:
       - dev 
   db:
     image: 'postgres'
+    container_name: db
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
@@ -36,8 +37,8 @@ services:
       - dev 
 
   pgadmin:
-    container_name: pg-admin
     image: 'dpage/pgadmin4'
+    container_name: pg-admin
     environment:
       PGADMIN_DEFAULT_EMAIL: adming@admin.com
       PGADMIN_DEFAULT_PASSWORD: root
