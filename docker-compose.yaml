@@ -20,8 +20,9 @@ services:
     networks:
       - dev 
   db:
-    image: 'postgres'
+    image: postgres
     container_name: db
+    restart: always
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
