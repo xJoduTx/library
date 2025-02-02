@@ -1,4 +1,5 @@
 services:
+
   api:
     image: my-spring-boot-app
     build: ./api
@@ -10,6 +11,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/mydb
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
+      SPRING_API_URL: http://localhost:9090
     expose:
       - 9090
   db:
@@ -50,7 +52,5 @@ services:
     stdin_open: true
     tty: true
     environment:
-      - VITE_API_URL=http://localhost:9090
+      - VITE_API_URL= http://localhost:9090
 
-
-      

@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,22 +16,22 @@ import java.util.List;
 @Slf4j
 @AllArgsConstructor
 @RequestMapping("/books")
+@CrossOrigin(origins = "http://localhost:5174/", maxAge = 3600)
 public class BookController {
+    @Value("${library.api.url}")
+    private String allowed_api;
 
     @NonNull
     private final BookService bookService;
 
-//    @CrossOrigin(origins = "http://localhost:5174/", maxAge = 3600)
     @GetMapping("/all") // показывает все книги
     public List<Book> getAll() {
         return bookService.findAllBooksService();
     }
 
     @PostMapping("/save") //сохраняет книгу
-//    @CrossOrigin(origins = "http://localhost:5174/", maxAge = 3600)
     public Book saveBook(@Valid @RequestBody BookDTO bookDTO) throws Exception {
-        return bookService.saveBookService(bookDTO);
-    }
+        return bookService.saveBookService(bookDTO);}
 
     @GetMapping("/getById/{id}") // ищет книгу по айди
     public Book findBookById(@PathVariable Long id){

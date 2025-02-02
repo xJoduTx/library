@@ -3,6 +3,7 @@ package com.project.library.config;
 import com.project.library.security.TokenFilter;
 import com.project.library.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -27,7 +28,8 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-
+    @Value("${library.api.url}")
+    private String allowed_api;
     @Autowired
     private UserServiceImpl userService;
     @Autowired
@@ -68,7 +70,7 @@ public class SecurityConfiguration {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/auth/**","/hello/**").permitAll()
+                        .requestMatchers("/auth/**", "/hello/**").permitAll()
                         .requestMatchers("/secured/user").fullyAuthenticated()
                         .anyRequest().authenticated()
                 )
@@ -79,9 +81,11 @@ public class SecurityConfiguration {
     @Bean
     @Primary
     public CorsConfigurationSource configurationSource() {
+        System.out.println(allowed_api + "awdawdawdawdawdawdawdawdadwdawdawd----------------------------------------------------\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n------------------------------------------------------------------------------------");
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",
+                allowed_api,
                 "http://172.18.0.2:5173/",
                 "http://5.159.102.84:5173",
                 "http://192.168.1.161:5173",
