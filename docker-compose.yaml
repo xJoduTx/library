@@ -1,3 +1,6 @@
+networks:
+  dev:
+
 services:
 
   api:
@@ -14,6 +17,8 @@ services:
       SPRING_API_URL: http://localhost:9090
     expose:
       - 9090
+    networks:
+      - dev 
   db:
     image: postgres
     environment:
@@ -27,6 +32,8 @@ services:
       - '5432:5432'
     expose:
       - 5432
+    networks:
+      - dev 
 
   pgadmin:
     container_name: pg-admin
@@ -38,6 +45,8 @@ services:
       - '80:80'
     expose:
       - 80
+    networks:
+      - dev 
       
   ui:
     build: ./ui
@@ -52,5 +61,7 @@ services:
     stdin_open: true
     tty: true
     environment:
-      - VITE_API_URL= http://localhost:9090
+      VITE_API_URL: http://localhost:9090
+    networks:
+      - dev 
 
