@@ -17,6 +17,8 @@ export default function Register() {
             "email":inputEmail,
             "password":inputPassword
         }
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n")
+
         const res = await fetch(API_URL + "/auth/signup", {
             method: "POST",
             body: JSON.stringify(tempBody),
@@ -24,6 +26,10 @@ export default function Register() {
                 "Content-Type": "application/json"
             }
         })
+        const hello = await fetch(API_URL + "/hello/api", {
+            method: "GET",
+        })
+        console.log(hello.json())
         if (res.ok) {
             const res = await fetch(API_URL+ "/auth/signin", {
                 method: "POST",
