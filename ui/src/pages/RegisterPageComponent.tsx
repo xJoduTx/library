@@ -45,7 +45,7 @@ export default function Register() {
                 navigate("/")
             }
         }
-        window.location.reload()
+        // window.location.reload()
     }
 
     return (
