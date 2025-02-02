@@ -1,7 +1,7 @@
 import InputBooksAction from "./InputBooksAction"
 
 async function buttonAction(inputTitle: number) {
-    const path = "http://localhost:9090/books/delete/" + inputTitle
+    const path = "http://5.159.102.181:5173/books/delete/" + inputTitle
     await fetch(path,
         {
             method: "DELETE",

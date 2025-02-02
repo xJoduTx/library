@@ -14,7 +14,7 @@ export default function Login() {
             "password": inputPassword
         }
         localStorage.clear()
-        const res = await fetch("http://localhost:9090/auth/signin", {
+        const res = await fetch("http://5.159.102.181:5173/auth/signin", {
             method: "POST",
             body: JSON.stringify(tempBody),
             headers: {
