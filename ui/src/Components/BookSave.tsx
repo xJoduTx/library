@@ -2,13 +2,14 @@ import InputBooksAction from "./InputBooksAction"
 import "../styles.css"
 
 async function buttonAction(inputTitle: string, inputAuthor: string, inputIsbn: number, inputAvailableCopies: boolean) {
+    const API_URL = import.meta.env.VITE_API_URL;
     const postBody = {
         title: inputTitle,
         author: inputAuthor,
         isbn: inputIsbn,
         available_copies: inputAvailableCopies
     }
-    await fetch("http://5.159.102.84:5173/books/save", {
+    await fetch(API_URL+"/books/save", {
         method: "POST",
         body: JSON.stringify(postBody),
         headers: {

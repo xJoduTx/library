@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 export default function User() {
     const [userName, setUserName] = useState<string>()
     const [item, setItem] = useState<string | null>("")
+    const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         setItem(localStorage.getItem("token"))
@@ -10,7 +11,7 @@ export default function User() {
     }, [])
 
     async function fetchContent() {
-        const res = await fetch("http://5.159.102.84:5173/secured/user", {
+        const res = await fetch(API_URL+ "/secured/user", {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + localStorage.getItem("token")

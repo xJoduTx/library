@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom"
 export default function GetAllBooks() {
     const navigation = useNavigate()
     const [books, setBooks] = useState<ApiData[]>([])
+    const API_URL = import.meta.env.VITE_API_URL;
 
     const getBookApi = async () => {
         try {
-            const responce = await fetch('http://5.159.102.84:5173/books/all', {
+            const responce = await fetch(API_URL+'/books/all', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

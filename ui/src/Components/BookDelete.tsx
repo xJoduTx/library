@@ -1,7 +1,9 @@
 import InputBooksAction from "./InputBooksAction"
 
 async function buttonAction(inputTitle: number) {
-    const path = "http://5.159.102.84:5173/books/delete/" + inputTitle
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    const path = API_URL + "/books/delete/" + inputTitle
     await fetch(path,
         {
             method: "DELETE",

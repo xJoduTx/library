@@ -2,12 +2,16 @@ import axios from "axios"
 import InputBooksAction from "./InputBooksAction"
 
 async function buttonSearchAction(inputTitle: number) {
-    await axios.get("http://5.159.102.84:5173/books/getByTitle/" + inputTitle)
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    await axios.get(API_URL + "/books/getByTitle/" + inputTitle)
     window.location.reload()
 }
 
 async function buttonTakeAction(inputTitle: number) {
-    const path = "http://5.159.102.84:5173/books/take/" + inputTitle
+    const API_URL = import.meta.env.VITE_API_URL;
+    
+    const path = API_URL + "/books/take/" + inputTitle
     await fetch(path, {
         method: "GET",
         headers: {

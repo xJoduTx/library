@@ -5,6 +5,7 @@ import InputBooksAction from "../Components/InputBooksAction";
 
 export default function Login() {
     const navigate = useNavigate()
+    const API_URL = import.meta.env.VITE_API_URL;
     let inputLogin: string;
     let inputPassword: string;
 
@@ -14,7 +15,7 @@ export default function Login() {
             "password": inputPassword
         }
         localStorage.clear()
-        const res = await fetch("http://5.159.102.84:5173/auth/signin", {
+        const res = await fetch(API_URL+ "/auth/signin", {
             method: "POST",
             body: JSON.stringify(tempBody),
             headers: {
@@ -27,7 +28,7 @@ export default function Login() {
             localStorage.setItem("token", json)
             navigate("/")
         }
-        // window.location.reload()
+        window.location.reload()
     }
 
     return (
