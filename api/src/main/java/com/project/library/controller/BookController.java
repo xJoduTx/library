@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +19,8 @@ import java.util.List;
 @RequestMapping("/books")
 @CrossOrigin(origins = "http://localhost:5174/", maxAge = 3600)
 public class BookController {
-    @Value("${library.api.url}")
-    private String allowed_api;
-
     @NonNull
+    @Autowired
     private final BookService bookService;
 
     @GetMapping("/all") // показывает все книги
