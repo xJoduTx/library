@@ -12,7 +12,7 @@ function Book({ id, title, author, books_copies, isbn }: BookProps) {
 
     return (
         <>
-            <div className="book-container">
+            <div className="book-container ">
                 <div className="book-grid">
                     <p className="book-id ">{id}</p>
                 </div>

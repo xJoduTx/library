@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
+import { API_URL } from "../const"
 
 export default function User() {
     const [userName, setUserName] = useState<string>()
     const [item, setItem] = useState<string | null>("")
-    const API_URL = import.meta.env.VITE_API_URL;
+    // const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         setItem(localStorage.getItem("token"))

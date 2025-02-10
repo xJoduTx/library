@@ -1,7 +1,8 @@
+import { API_URL } from "../const"
 import InputBooksAction from "./InputBooksAction"
 
 async function buttonAction(inputTitle: number) {
-    const API_URL = import.meta.env.VITE_API_URL;
+    // const API_URL = import.meta.env.VITE_API_URL;
 
     const path = API_URL + "/books/delete/" + inputTitle
     await fetch(path,

@@ -18,5 +18,4 @@ public class MainController {
             return null;
         return principal.getName();
     }
-
 }

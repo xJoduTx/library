@@ -6,10 +6,11 @@ import findBookWindow from '../Components/BookSearch'
 import GetAllBooks from '../Components/GetAllBooksAction'
 
 function Books() {
+    
     const books = GetAllBooks()
 
     return (<div>
-        <div className='flex flex-col float-right'>
+        <div className='flex flex-row flex-wrap'>
             <div className="default-div">
                 {SaveBookWindow()}
             </div>
@@ -21,7 +22,7 @@ function Books() {
             </div>
         </div>
 
-        <div className="flex overflow-x-auto snap-x">
+        <div className="flex overflow-x-auto snap-x ">
             {books && books.map((book) => (
                 <Book
                     key={book.id}

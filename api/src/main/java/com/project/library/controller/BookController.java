@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @Slf4j
 @AllArgsConstructor
 @RequestMapping("/books")
-@CrossOrigin(origins = "http://localhost:5174/", maxAge = 3600)
+@CrossOrigin(origins = "${library.api.url}", maxAge = 3600)
 public class BookController {
+
     @NonNull
     @Autowired
     private final BookService bookService;

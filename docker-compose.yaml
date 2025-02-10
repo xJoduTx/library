@@ -1,8 +1,8 @@
 networks:
   dev:
+    driver: bridge
 
 services:
-
   api:
     image: my-spring-boot-app
     build: ./api
@@ -47,13 +47,11 @@ services:
     container_name: pg-admin
     environment:
       PGADMIN_DEFAULT_EMAIL: adming@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_DEFAULT_PASSWORD: oot
     ports:
       - '80:80'
-    expose:
-      - 80
     networks:
-      - dev 
+      - dev
       
   ui:
     build: ./ui
@@ -71,4 +69,14 @@ services:
       VITE_API_URL: http://185.91.54.108:9090
     networks:
       - dev 
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./logs:/var/log/nginx
+    networks:
+      - dev
 

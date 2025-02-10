@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { API_URL } from "../const"
 
 export default function GetAllBooks() {
     const navigation = useNavigate()
     const [books, setBooks] = useState<ApiData[]>([])
-    const API_URL = import.meta.env.VITE_API_URL;
+    // const API_URL = import.meta.env.VITE_API_URL;
 
     const getBookApi = async () => {
         try {

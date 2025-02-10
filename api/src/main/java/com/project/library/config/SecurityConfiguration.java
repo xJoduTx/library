@@ -81,8 +81,6 @@ public class SecurityConfiguration {
     @Bean
     @Primary
     public CorsConfigurationSource configurationSource() {
-        System.out.println("awdawdawdawdawdawdawdawdadwdawdawd----------------------------------------------------\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n------------------------------------------------------------------------------------");
-        System.out.println(allowed_api + "awdawdawdawdawdawdawdawdadwdawdawd----------------------------------------------------\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n------------------------------------------------------------------------------------");
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",
@@ -95,9 +93,10 @@ public class SecurityConfiguration {
                 "http://192.168.73.85:5173/",
                 "http://192.168.1.161:5173/",
                 "http://localhost:8080/",
+                "http://localhost:5173",
                 "http://192.168.1.161:5173"));
-        config.setAllowedMethods(List.of("PUT", "GET", "POST", "Post", "OPTIONS"));
-        config.setAllowedHeaders(List.of("Authorization", "Content-type", "authorization", "hell", "cookie"));
+        config.setAllowedMethods(List.of("PUT", "GET", "POST", "Post", "OPTIONS", "DELETE", "Delete"));
+        config.setAllowedHeaders(List.of("Authorization", "Content-type", "authorization", "cookie"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

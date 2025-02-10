@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import InputBooksAction from "../Components/InputBooksAction";
-
+import { API_URL } from "../const";
 
 
 export default function Register() {
     const navigate = useNavigate()
-    const API_URL = import.meta.env.VITE_API_URL;
+    // const API_URL = import.meta.env.VITE_API_URL;
 
     let inputLogin: string;
     let inputEmail: string;
@@ -26,10 +26,7 @@ export default function Register() {
                 "Content-Type": "application/json"
             }
         })
-        const hello = await fetch(API_URL + "/hello/api", {
-            method: "GET",
-        })
-        console.log(hello.json())
+
         if (res.ok) {
             const res = await fetch(API_URL+ "/auth/signin", {
                 method: "POST",

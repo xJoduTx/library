@@ -1,15 +1,16 @@
 import axios from "axios"
 import InputBooksAction from "./InputBooksAction"
+import { API_URL } from "../const";
 
 async function buttonSearchAction(inputTitle: number) {
-    const API_URL = import.meta.env.VITE_API_URL;
+    // const API_URL = import.meta.env.VITE_API_URL;
 
     await axios.get(API_URL + "/books/getByTitle/" + inputTitle)
     window.location.reload()
 }
 
 async function buttonTakeAction(inputTitle: number) {
-    const API_URL = import.meta.env.VITE_API_URL;
+    // const API_URL = import.meta.env.VITE_API_URL;
     
     const path = API_URL + "/books/take/" + inputTitle
     await fetch(path, {

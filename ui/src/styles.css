@@ -5,7 +5,7 @@
 
 @layer bookComponent {
   .book-container {
-    @apply flex-shrink-0 snap-start space-y-[7px] p-[5px] m-[5px] size-[15%];
+    @apply  snap-start space-y-[7px] p-[5px] m-[5px];
   }
 
   .book-grid {
